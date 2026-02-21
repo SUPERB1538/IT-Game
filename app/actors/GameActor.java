@@ -22,7 +22,6 @@ import events.UnitStopped;
 import play.libs.Json;
 import structures.GameState;
 import utils.ImageListForPreLoad;
-import play.libs.Json;
 
 /**
  * The game actor is an Akka Actor that receives events from the user front-end UI (e.g. when 
@@ -55,7 +54,7 @@ public class GameActor extends AbstractActor {
 		eventProcessors = new HashMap<String,EventProcessor>();
 		eventProcessors.put("initalize", new Initalize());
 		eventProcessors.put("heartbeat", new Heartbeat());
-		eventProcessors.put("unitMoving", new UnitMoving());
+		eventProcessors.put("unitmoving", new UnitMoving());
 		eventProcessors.put("unitstopped", new UnitStopped());
 		eventProcessors.put("tileclicked", new TileClicked());
 		eventProcessors.put("cardclicked", new CardClicked());
@@ -86,8 +85,14 @@ public class GameActor extends AbstractActor {
 	public Receive createReceive() {
 		return receiveBuilder()
 				.match(JsonNode.class, message -> {
-					System.out.println(message);
-					processMessage(message.get("messagetype").asText(), message);
+					String type = message.get("messagetype").asText();
+					String key = type.toLowerCase();
+
+					if (!"heartbeat".equals(key)) {
+						System.out.println("EVENT: " + type);
+					}
+
+					processMessage(key, message);
 				}).build();
 	}
 

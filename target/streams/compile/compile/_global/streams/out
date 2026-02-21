@@ -1,2 +1,4 @@
-[0m[[0m[0mdebug[0m] [0m[0mAcquiring lock on file /Users/wubingze/Desktop/workspace_java_backend/UofG/ITSD-DT2025-26-Template/project/target/.sbt-compilation-infos/root-compile/.sbt-idea-lock ...[0m
-[0m[[0m[0mdebug[0m] [0m[0mReleasing lock on file /Users/wubingze/Desktop/workspace_java_backend/UofG/ITSD-DT2025-26-Template/project/target/.sbt-compilation-infos/root-compile/.sbt-idea-lock.[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/wubingze/Desktop/workspace_java_backend/UofG/IT-Team-Project/app/events/TileClicked.java:31:1: 找不到符号[0m
+[0m[[0m[31merror[0m] [0m[0m  符号:   变量 something[0m
+[0m[[0m[31merror[0m] [0m[0m  位置: 类型为structures.GameState的变量 gameState[0m
+[0m[[0m[31merror[0m] [0m[0mgameState.something[0m

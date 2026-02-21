@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/wubingze/Desktop/workspace_java_backend/UofG/ITSD-DT2025-26-Template/conf/routes
-// @DATE:Wed Jan 21 05:17:30 CST 2026
+// @SOURCE:/Users/wubingze/Desktop/workspace_java_backend/UofG/IT-Team-Project/conf/routes
+// @DATE:Sat Feb 21 07:47:20 CST 2026
 
 import play.api.routing.JavaScriptReverseRoute
 

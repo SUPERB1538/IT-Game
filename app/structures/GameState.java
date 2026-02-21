@@ -24,6 +24,11 @@ public class GameState {
 	public Player humanPlayer;
 	public Player aiPlayer;
 
+	public Unit humanAvatar;
+	public Unit aiAvatar;
+	public int humanAvatarX, humanAvatarY;
+	public int aiAvatarX, aiAvatarY;
+
 	// Board (9x5 grid)
 	public Unit[][] board = new Unit[9][5];
 

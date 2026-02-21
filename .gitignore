@@ -29,6 +29,8 @@ sbt.bat
 *.ear
 *.class
 
+.idea/
+
 
 # Skip Eclipse Files
 *.pydevproject

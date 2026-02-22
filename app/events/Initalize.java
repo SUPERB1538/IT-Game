@@ -31,6 +31,7 @@ public class Initalize implements EventProcessor {
 
 		// Prevent duplicate initialization
 		if (gameState.gameInitialised) return;
+		gameState.gameInitialised = true;
 
 		// 1) Initialize both players
 		gameState.humanPlayer = new Player();
@@ -99,8 +100,13 @@ public class Initalize implements EventProcessor {
 			gameState.humanHand.add(card);
 			BasicCommands.drawCard(out, card, i + 1, 0);
 		}
+		// 9) AI cards
+		for (int i = 0; i < 3; i++) {
+			if (gameState.aiDeck.isEmpty()) break;
+			Card card = gameState.aiDeck.remove(0);
+			gameState.aiHand.add(card);
+		}
 
 		BasicCommands.addPlayer1Notification(out, "Game Started", 2);
-		gameState.gameInitialised = true;
 	}
 }

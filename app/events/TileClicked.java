@@ -17,9 +17,6 @@ import utils.BasicObjectBuilders;
  */
 public class TileClicked implements EventProcessor {
 
-	@Override
-	public void processEvent(ActorRef out, GameState gameState, JsonNode message) {
-
 		// 1. Extract frontend coordinates (1-indexed)
 		int x = message.get("tilex").asInt();
 		int y = message.get("tiley").asInt();

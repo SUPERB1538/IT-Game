@@ -7,11 +7,12 @@ import structures.basic.Card;
 import structures.basic.Player;
 import structures.basic.Tile;
 import structures.basic.Unit;
+import structures.basic.Tile; // Added import for Tile class
+
 /**
  * This class can be used to hold information about the on-going game.
  * Its created with the GameActor.
- * 
- * @author Dr. Richard McCreadie
+ * * @author Dr. Richard McCreadie
  *
  */
 public class GameState {
@@ -39,7 +40,9 @@ public class GameState {
 	public List<Card> aiDeck = new ArrayList<>();
 	public List<Card> aiHand = new ArrayList<>();
 
-	// Selection state
+	// --- Selection state (Extended for Section C) ---
+    
+    // Tracks the currently selected unit, tile, or card
 	public Unit selectedUnit = null;
 	public Tile selectedTile = null; // Added: Tracks the tile where the selected unit resides
 	public Card selectedCard = null;

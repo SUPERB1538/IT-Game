@@ -6,31 +6,42 @@ import structures.basic.Board;
 import structures.basic.Tile;
 import structures.basic.Unit;
 
+/**
+ * Service class for calculating valid movement ranges on a 9x5 grid.
+ * Adheres to Manhattan distance rules with optimized pruning for performance.
+ */
 public class MovementService {
 
-    private static final int W = 9;
-    private static final int H = 5;
-    private static final int R = 2;
+    private static final int BOARD_WIDTH = 9;
+    private static final int BOARD_HEIGHT = 5;
+    private static final int MAX_MOVEMENT_RANGE = 2;
 
+    /**
+     * Calculates all unoccupied tiles within a movement range of 2.
+     * @param board Current game board state.
+     * @param unit The unit currently being calculated for movement.
+     * @return List of valid target tiles for movement.
+     */
     public List<Tile> getValidMoves(Board board, Unit unit) {
         List<Tile> validTiles = new ArrayList<>(12);
         if (unit == null || board == null) return validTiles;
 
-        final int sx = unit.getPosition().getTilex();
-        final int sy = unit.getPosition().getTiley();
+        final int startX = unit.getPosition().getTilex();
+        final int startY = unit.getPosition().getTiley();
 
-        for (int x = 0; x < W; x++) {
-            final int dx = Math.abs(sx - x);
-            if (dx > R) continue;
+        for (int x = 0; x < BOARD_WIDTH; x++) {
+            final int distX = Math.abs(startX - x);
+            if (distX > MAX_MOVEMENT_RANGE) continue; // Performance pruning
 
-            for (int y = 0; y < H; y++) {
-                final int dy = Math.abs(sy - y);
-                final int d = dx + dy;
+            for (int y = 0; y < BOARD_HEIGHT; y++) {
+                final int distY = Math.abs(startY - y);
+                final int totalDist = distX + distY;
 
-                if (d > 0 && d <= R) {
-                    Tile t = board.getTile(x, y);
-                    if (t != null && !t.hasUnit()) {
-                        validTiles.add(t);
+                // Ensure tile is within range and not the current tile
+                if (totalDist > 0 && totalDist <= MAX_MOVEMENT_RANGE) {
+                    Tile target = board.getTile(x, y);
+                    if (target != null && !target.hasUnit()) {
+                        validTiles.add(target);
                     }
                 }
             }
@@ -38,7 +49,10 @@ public class MovementService {
         return validTiles;
     }
 
+    /**
+     * Checks if the provided coordinates reside within the 9x5 grid bounds.
+     */
     public boolean isWithinBounds(int x, int y) {
-        return x >= 0 && x < W && y >= 0 && y < H;
+        return x >= 0 && x < BOARD_WIDTH && y >= 0 && y < BOARD_HEIGHT;
     }
 }

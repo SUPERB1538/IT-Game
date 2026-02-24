@@ -16,11 +16,11 @@ import utils.StaticConfFiles;
 /**
  * Indicates that both the core game loop in the browser is starting, meaning
  * that it is ready to recieve commands from the back-end.
- * 
- * { 
+ *
+ * {
  *   messageType = “initalize”
  * }
- * 
+ *
  * @author Dr. Richard McCreadie
  *
  */
@@ -106,10 +106,6 @@ public class Initalize implements EventProcessor {
 			Card card = gameState.aiDeck.remove(0);
 			gameState.aiHand.add(card);
 		}
-
-
-
-		
 
 		BasicCommands.addPlayer1Notification(out, "Game Started", 2);
 	}

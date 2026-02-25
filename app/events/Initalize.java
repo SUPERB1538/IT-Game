@@ -107,10 +107,6 @@ public class Initalize implements EventProcessor {
 			gameState.aiHand.add(card);
 		}
 
-
-
-		
-
 		BasicCommands.addPlayer1Notification(out, "Game Started", 2);
 	}
 }

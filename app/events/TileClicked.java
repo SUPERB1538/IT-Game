@@ -123,9 +123,6 @@ public class TileClicked implements EventProcessor {
 		gameState.selectedTile = null;
 	}
 
-	// =============================================================
-	// Helper Methods
-	// =============================================================
 
 	/**
 	 * Checks if the unit belongs to the human player.
